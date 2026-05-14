@@ -1,7 +1,7 @@
 {
   "name": "discord-persona-bot",
-  "version": "1.0.0",
-  "description": "A Discord bot with a custom AI persona powered by Google Gemini",
+  "version": "2.0.0",
+  "description": "Discord persona bot with multi-provider AI support",
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
@@ -11,8 +11,12 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.21.0",
     "discord.js": "^14.16.3",
-    "dotenv": "^17.4.2"
+    "@google/generative-ai": "^0.21.0",
+    "groq-sdk": "^0.9.0",
+    "openai": "^4.67.0",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@mistralai/mistralai": "^1.3.0",
+    "cohere-ai": "^7.14.0"
   }
 }

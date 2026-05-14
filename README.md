@@ -1,7 +1,7 @@
 # 🤖 Discord Persona Bot
 
 A Discord bot powered by **Google Gemini** with a fully customizable persona, authorized-user access control, persistent chat logs, custom memories, and AI image generation. Designed for Railway deployment.
-
+### If you are forking this then skip 4-7 steps on setup and the first step of deploy it to railway.
 ---
 
 ## ✨ Features
@@ -20,7 +20,7 @@ A Discord bot powered by **Google Gemini** with a fully customizable persona, au
 ---
 
 ## 📁 Structure
-
+(This will be assigned automatically. Do not add them manually)
 ```
 discord-persona-bot/
 ├── bot.js              Main bot
@@ -46,6 +46,7 @@ discord-persona-bot/
 3. Enable **MESSAGE CONTENT INTENT** under Privileged Gateway Intents
 4. **OAuth2 > URL Generator** → scope `bot` → permissions: `Send Messages`, `Read Message History`, `View Channels`, `Attach Files`
 5. Invite the bot to your server
+6. Add profile image from bot section (Optional)
 
 ### 2. Gemini API Key
 
@@ -63,8 +64,15 @@ cp .env.example .env
 # Fill in DISCORD_TOKEN, GEMINI_API_KEY, OWNER_ID
 # Optionally add AUTHORIZED_USERS=id1,id2,id3
 ```
+### 5. Download Nodejs
 
-### 5. Run locally
+Download nodejs from [Here](https://nodejs.org/en). For npm commands.
+
+### 6. Download Git
+
+Download Git from [Here](https://git-scm.com/). For Git commands.
+
+### 7. Run locally
 
 ```bash
 npm install
@@ -76,6 +84,16 @@ npm start
 ## ☁️ Deploy to Railway
 
 1. Push this folder to a GitHub repo
+```bash
+# I. Link your local folder to your new repo
+git remote add origin https://github.com/yourusername/yourrepo.git
+
+# II. Rename the branch to main (standard for GitHub)
+git branch -M main
+
+# III. Push the code
+git push -u origin main
+```
 2. [railway.app](https://railway.app) → **New Project** → **Deploy from GitHub**
 3. Select your repo
 4. Go to **Variables** and add:
@@ -107,6 +125,8 @@ Railway auto-deploys on every push. The `data/` folder is ephemeral on Railway (
 | `!logs last <n>` | View last N messages |
 | `!logs search <keyword>` | Search chat log by keyword |
 | `!ask <question>` | Ask AI a question about this channel's history |
+| `!memory add <userId> <fact>` | Add a fact about a specific user |
+| `!memory remove <scope> <index>` | Delete a memory by index |
 | `!clear` | Clear conversation memory (logs kept) |
 | `!persona` | Show current persona info |
 | `!help` | List all commands |
@@ -120,8 +140,6 @@ Railway auto-deploys on every push. The `data/` folder is ephemeral on Railway (
 | `!auth remove <@user or ID>` | Remove authorization |
 | `!auth list` | List all authorized users |
 | `!memory add global <fact>` | Add a fact known about everyone |
-| `!memory add <userId> <fact>` | Add a fact about a specific user |
-| `!memory remove <scope> <index>` | Delete a memory by index |
 | `!memory list` | List all memory scopes |
 | `!memory list <scope>` | List entries in a scope |
 
